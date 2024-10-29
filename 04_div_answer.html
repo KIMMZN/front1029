@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body {
+    height: 1024px;
+    background-color: aquamarine;
+    margin: 0;
+    padding: 0;
+}
+.search-box {
+    height: 30px;
+    width: 300px;
+    background-color: aliceblue;
+    border-radius: 40px;
+    padding: 10px;
+    border: 1px solid;
+    justify-content: center;
+    display: flex;
+}
+.search-txt{
+    border: none;
+    background-color: none;
+    outline: none;
+    float:left;
+    padding: 0;
+    color: #797979;
+    font-size: 16px;
+    line-height: 30px;
+    width: 200px;
+}
+.search-btn {
+    color: #f9deec;
+
+    float: left;
+    width: 40px;
+    height: 100%;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#search-div{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: blue;
+    height: 150px;
+
+}
+
+#nav-menu {
+    background-color: #797979;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+
+}
+#nave-menu ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#div1 {
+    margin: 0;
+    background-color: palevioletred;
+    height: 400px;
+}
+
+.section1 {
+    padding: 20px;
+    width: 800px;
+    background-color: white;
+    height: 360px;
+    float: left;
+    display: flex;
+    justify-content: center;
+
+}
+.section1 img{
+    margin-top: 25px;
+    display: block;  
+    align-items: center;
+    justify-content: center;
+    
+    width: 600px;
+    height: 300px;
+}
+.section2 {
+    float: left;
+    background-color: gold;
+    height: 100%;
+    width: 417px;
+}
+.idform {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.loginbutton {
+    margin-right: 50px;
+    display: block;
+    align-items: center;
+}
+#div2 {
+    background-color: rebeccapurple;
+    height: 400px;
+    padding: 50px;
+    display: flex; /* 플렉스 레이아웃으로 설정 */
+    flex-direction: row; /* 기본값으로 가로 정렬 */
+    justify-content: space-between; /* 필요에 따라 정렬을 조정 */
+}
+.section3{
+    background-color: yellow;
+    width: 30%;
+    height: 100%;
+
+}
+.section4{
+    background-color: yellow;
+    width: 30%;
+    height: auto;
+
+}
+.section5{
+    background-color: yellow;
+    width: 30%;
+    height: auto;
+
+}
+
+</style>
+<script src="https://kit.fontawesome.com/ae15ba340d.js" crossorigin="anonymous"></script>
+
+
+<script>
+
+</script>
+<body>
+ <div id="search-div">
+    <form class="search-box" action="" method="get">
+        <input class="search-txt" type="text" name="" placeholder="검색어를 입력하시오">
+        <button class="search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+ </div>
+
+ <nav id="nav-menu">
+    <ul>
+        <li><a href="#home">home</a></li>
+
+    </ul>
+ </nav>
+
+ <div id="div1">
+    <div class="section1">
+        <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0"
+        alt="example image" >
+    </div>
+    <div class="section2">
+        <form class="idform">
+            <p>아이디 <input type="text"></p>
+            <p>비밀번호 <input type="password"></p>
+            <input type="button" value="로그인" class="loginbutton">
+        </form>
+
+
+    </div>
+ </div>
+ <div id="div2">
+    <div class="section3">section3</div>
+    <div class="section4">section4</div>
+    <div class="section5">section5</div>
+
+
+ </div>
+
+
+
+    
+</body>
+</html>

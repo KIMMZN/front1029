@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 순서를 기억하자 .. 선택(선택자)하고 스타일 적용*/
+    /*클래스는 그냥 선택자*/
+     /* #은 id 선택자*/
+    /* class 선택은 .*/
+    body{background-color: aqua;
+        width: 1024px;
+    }
+
+   
+    #header {
+        background-color: blue;
+        width: 1020px;
+        height: 100px;
+        float: left;
+    }
+    #nav {
+        background-color: blueviolet;
+        width:1024px;
+        height: 50px;
+        float: left;
+    }
+    
+    .section {
+        width: 400px;
+        height: 150px;
+        float: left;
+        /* display: inline-flex;*/
+        background-color: brown;
+
+    }
+</style>
+
+
+<body>
+    <!-- 속성에 id지정할수 있음. id는 문서내에서 유니크 해야된다. -->
+     <!-- class는 유니크 하지 않아도 됨-->
+    <div id="header"></div>
+    <div id="nav">
+        [home] [자바공부] [게시판]
+
+    </div>
+    <div class="section">type1</div>
+    <div class="section">type2</div>
+   
+</body>
+</html>
