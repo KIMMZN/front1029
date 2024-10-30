@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"> <!-- -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- table 태그
+        0. 테이블 헤더는 th
+        1. row ㅡㅡ> <tr>
+        2. column ㅡㅡ> <td>
+        3. row를 합치는 것 ㅡㅡ> rowspan
+        4. col을 합치는 것 ㅡㅡ> colspan
+        5.          
+    
+    -->
+        <style>
+            table {
+                /*border: 1px solid;*/
+                width: 300px;
+                height: 300px;
+            }
+            tr, td, th {
+                border: 1px solid blue;
+            }
+            th {
+                background-color: darkgrey;
+            }
+            th:hover {
+                background-color: aquamarine;
+            }
+        </style>
+      
+        <table>
+            <tr><th>번호</td><th>이름</td><th>수업시간에딴것한 횟수</td><th>매력</td><th>삭제</td></tr>
+            <tr><td>번호</td><td rowspan="2">고길동</td><td>수업시간에딴것한 횟수</td><td>매력</td><td>삭제</td></tr>
+            <tr><td>번호</td><td>ㅁㅁ</td><td colspan="2">ㅁㅁ</td></tr>
+            
+        </table>
+        <hr>
+        <hr>
+
+        <table>
+            <tr><th colspan="2">회원이 되어 주셔서 갑사합니다</td></tr>
+                <tr><td>id</td><td><input type="text"></td></tr>
+                <tr><td>pass</td><td><input type="password"></td></tr>
+                <tr><td colspan="2">
+                    <input type="button" value="가입">
+                    <input type="submit" value="로그인"></tr>
+
+        </table>
+    
+</body>
+</html>

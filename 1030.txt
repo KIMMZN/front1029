@@ -1,0 +1,36 @@
+시멘틱 태그 : 화면분할, 하면서 분할한 화면에 의미부여
+div
+diplay
+# id
+. class
+형제 부모 자식 관계
+
+-----------
+1. html 문서가 무엇인가. 버전. 메타데이터. 문서의 개발환경.
+2. html 기본뼈대 header body 
+3. 화면 분할 시멘틱태그나 div로
+4. diplay 3가지 특징 기억
+5. diplay쓰면 여백이 생기는데 float을 써서 없애는데 쓴다
+6. margin, padding 알고 잘 사용하기
+7. padding : 부모쪽에서 , margin : 자식쪽에서
+8. 목록태그 ul li
+9. 이미지태그, 상대경로냐 절대경로냐. 출처는 로컬이냐 웹에서냐
+10. <!-- table 태그
+        0. 테이블 헤더는 th
+        1. row ㅡㅡ> <tr>
+        2. column ㅡㅡ> <td>
+        3. row를 합치는 것 ㅡㅡ> rowspan
+        4. col을 합치는 것 ㅡㅡ> colspan
+11.         
+
+
+bs homepage
+1280* 1024
+html5
+Header ㅡ 배너사진
+nav - 메뉴 ... 와 로그인 클릭메뉴
+div - 검색
+sectoin
+aside
+div  (bottom menu)
+footer 
