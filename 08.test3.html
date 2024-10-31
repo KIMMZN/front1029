@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+ #cal {
+    border: 1px solid gray;
+    width: 500px;
+    height: 600px;
+    box-sizing: border-box;
+    float: left;
+ }
+ #answertxt {
+    border: 1px solid black;
+    width: 99%;
+    height: 20%;
+    float: left;
+ }
+ #cal div {
+    border: 1px solid;
+    height: 16%;
+    width: 100%;
+    box-sizing: border-box;
+    float: left;
+    padding: 0;
+    margin: 0;
+ }
+ #cal input[type="text"] {
+    float: left;
+ }
+
+ #cal input[type ="button"] {
+    border: 1px solid;
+    height: 92px;
+    width: 33.3%;
+    float: left;
+ }
+ #cal input:hover {
+    background-color: aquamarine;
+ }
+
+
+</style>
+<body>
+
+    <div id="cal">
+        <input type="text" id="answertxt" placeholder="계산기">
+        <div>
+            <input type="button" value="1" id="1" onclick="test1(this)">
+            <input type="button" value="2" id="2" onclick="test1(this)">
+            <input type="button" value="3" id="3">
+        </div>
+        <div>
+            <input type="button" value="4" id="4" onclick="test1(this)">
+            <input type="button" value="5" id="5" onclick="test1(this)">
+            <input type="button" value="6" id="6" onclick="test1(this)">
+        </div>
+        <div>
+            <input type="button" value="7" id="7" onclick="test1(this)">
+            <input type="button" value="8" id="8" onclick="test1(this)">
+            <input type="button" value="9" id="9" onclick="test1(this)">
+        </div>
+        <div>
+            <input type="button" value="+" id="b+" onclick="test1(this)">
+            <input type="button" value="-" id="b-" onclick="test1(this)">
+            <input type="button" value="*" id="bx" onclick="test1(this)">
+        </div>
+        <div><input type="button" value="=" id="b=" onclick="test2(this)">
+            <input type="button" value="AC" id="reset" onclick="test3(this)">
+        </div>
+
+
+    </div>
+    
+    
+</body>
+</html>
+<script>
+   
+    function test1(click) { //숫자
+      
+        var a1 = click.value;
+
+        var topbox = document.getElementById("answertxt");
+        topbox.value += a1;
+    };
+
+    function test2(click) { // = 
+        
+        var topbox1 = document.getElementById("answertxt").value;
+        
+
+        var result1 = eval(topbox1);
+       
+        document.getElementById("answertxt").value = result1;
+       
+    }
+
+    function test3(click) { // ce
+
+        document.getElementById("answertxt").value = "";
+    }
+    
+
+
+
+
+</script>

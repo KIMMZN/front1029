@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>heelo</h2>
+
+    <div>
+        <form action="" method="get">
+            <p>아이디   <input type="text" id="id"></p>
+            <p>패스워드 <input type="text" id="pass"> </p>
+            <input type="button" value="클릭" onclick="test()" >
+       </form>
+
+    </div>
+    
+</body>
+</html>
+<script>
+
+    function test () {
+        
+        var a = document.getElementById('id').value;
+        var b = document.getElementById('pass').value;
+        var cc = document.getElementsByTagName('h2')[0];
+
+        var a1 = a.length;
+        var b1 = b.length;
+        if(a1 >= 8) {
+            if(b1 >= 4) {
+                alert('유효성 검사 성공');
+                cc.innerText = a+b;
+            }
+        }else {
+            alert('실패');
+
+        }
+
+    
+
+    }
+    
+
+
+</script>
