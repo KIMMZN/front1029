@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <h2 id="menu">오늘의 메뉴</h2>
+        <form action="">
+            <input type="button" value="버튼1" id="buttona">
+            <input type="button" value="버튼2" id="buttonb">
+            <input type="text" id="textbox">
+        </form>
+
+    </div>
+    
+</body>
+<script>
+   // var allbutton = document.getElementsByClassName("button1");
+
+    document.getElementById('buttona').addEventListener('click',test)
+
+    //document.getElementsByClassName('buttona')[0].addEventListener('click',test)
+    function test () {     
+     
+            let abc =  document.getElementById('textbox').value;
+           // alert(abc);
+
+            document.getElementById('menu').innerHTML = abc;
+
+    }
+
+    document.getElementById('buttonb').addEventListener('click', () => {
+        let ment = "수고하셧습니다";
+
+        document.getElementById('textbox').value = ment;
+        document.getElementById('menu').innerHTML ="오늘의 메뉴";
+
+
+
+    } )
+    
+
+
+
+
+
+
+</script>
+</html>

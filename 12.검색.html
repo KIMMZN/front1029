@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #abcd {
+        width : 600px;
+    }
+    .swordspan{
+        background-color:aqua;
+    }
+    .lightext {
+        background-color: yellow;
+
+    }
+
+</style>
+<script>
+    function sfun(){
+        var w = document.getElementById("abc").innerHTML;  // 본문을 저장할 변수 선언
+        var sw = document.getElementById("sword").value;   // 검색어를 저장할 변수 선언  
+        
+ 
+    }
+</script>
+
+<body>
+    <span class="lightext"></span>
+
+<div id="abcd">
+<span id="abc">
+주말 이틀 연속 코로나19 하루 신규 확진자가 10만명대를 
+기록하는 등 유행 규모가 감소세를 이어갔다. 
+정부가 방역·의료체계의 일상회복을 
+목표로 한 ‘포스트 오미크론 대응체계’를 준비하는 가운데 
+11일부터는 보건소 선별진료소와 임시선별진료소에서 코로나19 신속항원검사가 중단된다.
+</span>
+<br>
+찾을 문자열 <input type="text" id="sword"> 
+<input type="button" onclick="sfun()" value="검색">
+</span>
+</div>
+</body>
+
+
+<script>
+function sfun() {
+    //초기화
+    
+
+    const textbox = document.getElementById('sword').value;
+    //alert(textbox);
+    const maintextE = document.getElementById('abc');
+    const maintext = maintextE.innerText;
+
+    //초기화
+    maintextE.innerHTML =  maintextE.innerText;
+    alert(maintext);
+
+/*
+    var count = maintext.split(textbox).length-1;
+    alert(count);
+    */
+
+    //const index = maintext.indexOf(textbox);
+   // alert(index + "/ "+ textbox.length);
+
+    
+    let flagnum = 0;
+    let count = 0;
+    let indexbox = 0;
+    while(true) {
+        let foundtext = maintext.indexOf(textbox, flagnum);
+        //alert(foundtext);
+       // console.log(foundtext);
+
+        //없으면 -1리턴, break;
+        if(foundtext == -1) {
+            break;
+        }
+       // alert(foundtext+"//"+(foundtext+textbox.length))
+       // let replaceA =  maintext.indexOf(foundtext -1) 
+       // alert(maintext.charAt(foundtext))
+        count++;
+       // console.log(count);
+        flagnum = foundtext + 1;
+
+    }
+
+    alert("단어의 횟수:  " + count);
+    let replacew = "<span class='lightext'>" + textbox + '</span>';
+    //
+    let temp = maintextE.innerHTML;
+    maintextE.innerHTML = maintextE.innerHTML.replace(new RegExp(textbox, 'g'), replacew);
+
+    //정규식
+    //formal language 은 특정한 법칙 들로 구성된 문자열 들의 집합 을 의미한다.
+    // Javascript 는 XRegExp 
+    // 정규식 리터럴로 정규식 생성 --->  var reg = /test/;
+    // RegExp(pattern, flags?)
+
+    /*
+    pattern 에는 정규표현식 문자열 이나 다른 RegExp 객체를 받을 수 있다.
+    flags 에는 g i m s y u 문자를 받을 수 있다.
+
+    1. g: 문자열 전체를 확인한다.
+    2. i: 문자열 에서 대소문자를 구분하지 않는다.
+    3. m: 문자열 에서 `^` , `$` 에서 개행문자를 허용한다.
+    4. s: 문자열 에서 `.` 에서 개행문자를 허용한다.
+    5. y: lastIndex 부터 일치하는 문자열을 반환한다.
+    6. u: Unicode 코드 포인트의 시퀀스로 처리한다.
+
+*/
+
+
+
+    
+
+}
+
+
+</script>
+
+</html>
+
+<!-- 
+
+과제1 : 검색어가 모두 몇개인지 카운팅하시오
+과제2 : 검색어는 배경을 노락색으로 색칠하세요.
+
+
+-->

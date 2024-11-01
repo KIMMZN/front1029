@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cal {
+       border: 1px solid gray;
+       width: 500px;
+       height: 600px;
+       box-sizing: border-box;
+       float: left;
+    }
+    #answertxt {
+       border: 1px solid black;
+       width: 99%;
+       height: 20%;
+       float: left;
+    }
+    #cal div {
+       border: 1px solid;
+       height: 16%;
+       width: 100%;
+       box-sizing: border-box;
+       float: left;
+       padding: 0;
+       margin: 0;
+    }
+    #cal input[type="text"] {
+       float: left;
+    }
+   
+    #cal input[type ="button"] {
+       border: 1px solid;
+       height: 92px;
+       width: 33.3%;
+       float: left;
+       background-color: darkgray;
+    }
+    #cal input:hover {
+       background-color: aquamarine;
+    }
+   
+   
+   </style>
+   <body>
+   
+       <div id="cal">
+           <input type="text" id="answertxt" placeholder="계산기">
+           <div>
+               <input type="button" value="1" id="1" >
+               <input type="button" value="2" id="2" >
+               <input type="button" value="3" id="3">
+           </div>
+           <div>
+               <input type="button" value="4" id="4" >
+               <input type="button" value="5" id="5" >
+               <input type="button" value="6" id="6" >
+           </div>
+           <div>
+               <input type="button" value="7" id="7" >
+               <input type="button" value="8" id="8" >
+               <input type="button" value="9" id="9" >
+           </div>
+           <div>
+               <input type="button" value="+" id="b+" >
+               <input type="button" value="-" id="b-" >
+               <input type="button" value="*" id="bx" >
+           </div>
+           <div><input type="button" value="=" id="b=" >
+               <input type="button" value="AC" id="reset">
+           </div>
+   
+   
+       </div>
+       
+       
+   </body>
+   </html>
+   <script>
+    //버튼
+    const button1 = document.getElementById('1');
+    const button2 = document.getElementById('2');
+    const button3 = document.getElementById('3');
+    const button4 = document.getElementById('4');
+    const button5 = document.getElementById('5');
+    const button6 = document.getElementById('6');
+    const button7 = document.getElementById('7');
+    const button8 = document.getElementById('8');
+    const button9 = document.getElementById('9');
+
+
+    //
+
+    
+    function click_number(event) { // 숫자 함수
+
+        const click_num1 = event.target.value;
+
+        document.getElementById('answertxt').value +=  click_num1;
+
+    };
+    
+
+
+    //이벤트 리스너
+    button1.addEventListener("click", click_number);
+    button2.addEventListener("click", click_number);
+    button3.addEventListener("click", click_number);
+    button4.addEventListener("click", click_number);
+    button5.addEventListener("click", click_number);
+    button6.addEventListener("click", click_number);
+    button7.addEventListener("click", click_number);
+    button8.addEventListener("click", click_number);
+    button9.addEventListener("click", click_number);
+
+    //
+
+
+
+      
+     
+   
+   
+   
+   </script>
