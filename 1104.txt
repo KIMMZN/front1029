@@ -90,3 +90,7 @@ js잘쓰면 서버에 부담을 완화시킬수 있다
 4. network - request와 response 과정 분석
             url,method, code(304, 404)
 
+
+
+
+//값 자동계산하기
