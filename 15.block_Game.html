@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamedev Canvas</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 0 autto;
+        }
+
+    </style>
+
+</head>
+<body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    
+</body>
+<script>
+    
+    var canvas = document.querySelector("#myCanvas");
+    var ctx = canvas.getContext("2d");
+
+
+    var x = canvas.width/2;
+    var y = canvas.height-30;
+    var dx= 2;
+    var dy= -2;
+    var ballRadius = 10;
+
+
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width - paddleWidth)/2;
+    //
+    var rightPressed = false;
+    var leftPressed = false;
+
+    //벽돌 멤버변수
+    var brickRowCount = 3;
+    var brickColumnCount =5;
+    var brickWidth = 75;
+    var brickHeight = 20;
+    var brickPadding = 10;
+    var brickOffsetTop = 30;
+    var brickOffsetLeft = 30;
+
+    //점수
+    var score = 0;
+
+    //라이프
+    let lives = 3;
+
+   
+    var bricks = [];
+    for(let c = 0; c < brickColumnCount; c++) {
+        bricks[c] = [];
+        
+        for(let r =0; r < brickRowCount; r++) {
+            bricks[c][r] = {x:0, y:0,status:1 };
+        }
+    }
+    
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+
+
+    function mouseMoveHandler(e) {
+        var relativeX = e.clientX - canvas.offsetLeft;
+        if(relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth/2;
+         }
+    }
+
+    function keyDownHandler(e) {
+        //39는 왼쪽 방향키, 39는 오른쪽 방향키
+        if(e.keyCode == 39) {
+            rightPressed = true;
+        }else if (e.keyCode == 37) {
+            leftPressed = true;
+        }
+
+    }
+    function keyUpHandler(e) {
+
+        if(e.keyCode == 39) {
+            rightPressed = false;
+        }else if (e.keyCode == 37) {
+            leftPressed = false;
+        }
+
+
+    }
+   
+
+    function collisionDetection() {
+       
+        for(let c =0; c < brickColumnCount; c++) {
+            
+            for(let r=0; r<brickRowCount; r++) {
+                
+                var b = bricks[c][r];
+                if(b.status == 1) {
+                    
+                    if (x>b.x &&x < b.x + brickWidth &&y > b.y &&y<b.y+brickHeight ){
+                        //alert("asd");
+                        dy = -dy;
+                        b.status = 0;
+                        score++;
+                        if(score == brickRowCount*brickColumnCount) {
+                            alert("YOU WIN, 축하합니다!");
+                            document.location.reload();
+                        }
+                    }  
+                }             
+            }
+        }
+    }
+
+    function drawScore() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Score: "+score,8,20)
+
+    }
+
+    function drawLives() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText('Lives: '+lives, canvas.width - 65, 20);
+    }
+    
+
+    
+
+
+    function drawBall() { //볼위치
+        ctx.beginPath();
+        ctx.arc(x,y,ballRadius,0,Math.PI * 2);
+        ctx.fillStyle= "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    function drawPaddle() { //패들위치
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+
+    }
+    function drawBricks() {
+        for(let c = 0; c < brickColumnCount; c++) {
+            for(let r =0; r < brickRowCount; r++) {
+                if(bricks[c][r].status === 1) {
+                    const brickX = c*(brickWidth + brickPadding) + brickOffsetLeft;
+                    const brickY = r*(brickHeight + brickPadding) + brickOffsetTop;
+                    bricks[c][r].x=brickX;
+                    bricks[c][r].y=brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX,brickY,brickWidth,brickHeight);
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fill();
+                    ctx.closePath();
+
+                }
+              
+            }    
+        }
+    }
+
+    function draw() {
+        //d code
+       ctx.clearRect(0,0,canvas.width, canvas.height);
+       drawBricks();
+       drawBall();
+       drawPaddle();
+       drawScore();
+       collisionDetection();
+       drawLives();
+
+       if(x+dx>canvas.width-ballRadius || x+ dx < ballRadius) {
+            dx = -dx;
+
+       }
+        if(y+dy<ballRadius) {
+                dy = -dy;
+        }else if (y+dy > canvas.height - ballRadius) {
+            if(x> paddleX && x < paddleX + paddleWidth) {
+                if(y = y-paddleHeight) {
+                    dy = -dy;
+                }
+                
+            }else {
+                lives--;
+                if(!lives) {
+                    alert("GAME OVER");
+                    document.location.reload();
+                    
+                }
+                else {
+                    x = canvas.width/2;
+                    y = canvas.height-30;
+                    dx = 3;
+                    dy = -3;
+                    paddleX = (canvas.width-paddleWidth)/2;
+                }
+            
+            }
+       
+       }
+
+
+        //패들 이동로직
+        if(rightPressed&&paddleX < canvas.width - paddleWidth) {
+            paddleX += 7;
+        }else if(leftPressed && paddleX > 0) {
+            paddleX -= 7;
+        }
+
+        
+        x += dx;
+        y += dy;
+        requestAnimationFrame(draw);
+    }
+    //10밀리 세컨즈마다]
+   
+    draw();
+    
+   
+
+
+
+    /*
+    ctx.beginPath(); //시작
+    ctx.rect(20,40,50,50); //정의. 직사각형 모양 좌표, 켄버스에서 20떨어짐.캔버스 상단에서40, 너비높이 5050
+    ctx.fillStyle = "#FF0000"; // 색
+    ctx.fill();
+    ctx.closePath();//끝
+
+    ctx.beginPath();
+    //arc()메소드는 6개의 파라미터 갖음
+    //-원의 중심 x,y좌표 -원의 반지름, 시작 각도와 끝 각도, 그리는 방향(false시 시계방향. true는 반대)
+    ctx.arc(240, 160, 20, 0, Math.PI * 2, false);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.rect(160,10,100,40);
+    ctx.strokeStyle = "rgba(0,0,255,0.5)";
+    ctx.stroke();
+    ctex.closePath();
+
+    */
+
+    //js
+</script>
+</html>

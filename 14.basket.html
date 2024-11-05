@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>김시온</title>
   <style>
     body {
       margin: 0;
@@ -310,19 +310,34 @@
         var goodsDlv1 = document.querySelector("#goodsDlv").value;
         //alert(typeof(goodsDlv1));
 
-        let newOrder = cart__list.insertRow();
-        let cell1 = newOrder.insertCell(0);
-        let cell2 = newOrder.insertCell(1);
-        let cell3 = newOrder.insertCell(2);
-        let cell4 = newOrder.insertCell(3);
-        let cell5 = newOrder.insertCell(4);
+        if(goodsInfo1 != "" && goodsPrice1 !="" && goodsDlv1 !="") {
 
-        cell1.innerHTML= "<input type=\"checkbox\" class=checkbtnc>";
-        cell2.innerHTML = goodsInfo1;
-        cell3.innerHTML = goodsCnt1;
-        let sum = goodsCnt1 + goodsPrice1;
-        cell4.innerHTML = goodsPrice1;
-        cell5.innerHTML = goodsDlv1;
+          if(confirm("등록하시겠습니까?")) {
+            let newOrder = cart__list.insertRow();
+            let cell1 = newOrder.insertCell(0);
+            let cell2 = newOrder.insertCell(1);
+            let cell3 = newOrder.insertCell(2);
+            let cell4 = newOrder.insertCell(3);
+            let cell5 = newOrder.insertCell(4);
+
+            cell1.innerHTML= "<input type=\"checkbox\" class=checkbtnc>";
+            cell2.innerHTML = goodsInfo1;
+            cell3.innerHTML = goodsCnt1;
+            let sum = goodsCnt1 + goodsPrice1;
+            cell4.innerHTML = goodsPrice1;
+            cell5.innerHTML = goodsDlv1;
+
+          }else {
+            return;
+          }
+         
+       
+         
+          
+        }else {
+            alert("등록실패");
+        }
+
        
 
         //alert(typeof(goodsinfo1))
@@ -367,12 +382,22 @@
 
         }
 
-        let reset1 = document.querySelector("#hidden td");
+        let reset1 = document.querySelector("#hidden");
 
         alert(cart__list.rows.length);
+        //테이블 row의 length가  0일때
         if(cart__list.rows.length == 0) {
+          let totalsum = document.querySelector("#allPri");
+          let selectedPrice = document.querySelector("#allGoods");
+           let alldelPrice = document.querySelector('#allDlv');
+          totalsum.innerHTML = 0;
+          selectedPrice.innerHTML =0;
+          alldelPrice.innerHTML =0;
 
-            reset1.textContent = "장바구니가 비어있습니다. 물건을 주문해주세요.";
+          reset1.style.display = "";
+          
+
+            //reset1.textContent = "장바구니가 비어있습니다. 물건을 주문해주세요.";
         }
 
     })
@@ -383,11 +408,16 @@
         function allChk1() {
          let allcheckbox = document.getElementById("allChk"); // 
             let checkupAll = document.querySelectorAll("#cart__list input[type='checkbox']");
+          //
+
 
 
             if(allcheckbox.checked) {
                 for (let i = 0; i < checkupAll.length; i++) {
                 checkupAll[i].checked = true;
+              
+
+
                 }
                 
 
@@ -397,6 +427,63 @@
                 }    
 
             }
+
+            ///////// 전체 체크시 가격 계산
+            let tablelist = document.querySelector("#cart__list")
+           let checkupAll1 = document.querySelectorAll("#cart__list input[type='checkbox']");
+           let allgoodsp =  document.querySelector("#allGoods") 
+           let totalsum = document.querySelector("#allPri");
+           let selectedPrice = document.querySelector("#allGoods");
+           let alldelPrice = document.querySelector('#allDlv');
+              let ctotal = 0;
+              let cselprice =0;
+              let cdelprice =0;
+
+              //let selectPrice = 0;
+              //let delPrice = 0;
+
+              for(let i =0; i<tablelist.rows.length; i++) {
+                //tablelist.rows[i].cells[0].children[0].addEventListener("change",() =>{
+                  let checkbox = tablelist.rows[i].cells[0].children[0];
+
+                if(checkbox.checked) {
+                 // alert(i + "가 true임")
+                  //alert("옵션:" + tablelist.rows[i].cells[2].innerText);
+                 let quantity1 = tablelist.rows[i].cells[2].innerText;
+                  //alert("가격:" + tablelist.rows[i].cells[3].innerText)
+                  let price1 = tablelist.rows[i].cells[3].innerText;
+                  let delprice1 = tablelist.rows[i].cells[4].innerText;           
+                  //
+                  
+                  let quantity1Number=parseFloat(quantity1);
+                  let price1Number=parseFloat(price1);
+                  let delprice1Number = parseFloat(delprice1);  
+                
+                 // allGoods">선택상품금액</span> + 총 배송비   <span id="allDlv"
+
+
+                 // }
+                 if(!isNaN(quantity1Number)&&!isNaN(price1Number)&&!isNaN(delprice1Number)) {
+                    ctotal += (quantity1Number * price1Number) + delprice1Number;
+                    cselprice += (quantity1Number * price1Number);
+                    cdelprice += delprice1Number;
+
+
+                  }
+                 
+
+                 // alert(ctotal);
+                  
+             
+                }
+                totalsum.innerHTML = ctotal;
+                //let selectedPrice = document.querySelector("#allGoods");
+               // let alldelPrice = document.querySelector('#allDlv');
+                selectedPrice.innerHTML = cselprice;
+                alldelPrice.innerHTML = cdelprice;
+
+            
+          }
 
         }
 
@@ -409,10 +496,15 @@
            let checkupAll1 = document.querySelectorAll("#cart__list input[type='checkbox']");
            let allgoodsp =  document.querySelector("#allGoods") 
            let totalsum = document.querySelector("#allPri");
+           let selectedPrice = document.querySelector("#allGoods");
+           let alldelPrice = document.querySelector('#allDlv');
+
+           //alert(typeof(selectedPrice));
+          // alert(typeof(alldelPrice ));
 
            //for(let j =0; cart__list.row.length; i++) {
            // tablelist.
-           alert(typeof(tablelist));
+          // alert(typeof(tablelist));
 
 
             // 체크박스에 이벤트 리스너 등록
@@ -423,6 +515,8 @@
 
             function checkOne() {
               let ctotal = 0;
+              let cselprice =0;
+              let cdelprice =0;
 
               for(let i =0; i<tablelist.rows.length; i++) {
                 //tablelist.rows[i].cells[0].children[0].addEventListener("change",() =>{
@@ -433,30 +527,23 @@
                   //alert("옵션:" + tablelist.rows[i].cells[2].innerText);
                  let quantity1 = tablelist.rows[i].cells[2].innerText;
                   //alert("가격:" + tablelist.rows[i].cells[3].innerText)
-                  let price1 = tablelist.rows[i].cells[3].innerText;          
+                  let price1 = tablelist.rows[i].cells[3].innerText;
+                  let delprice1 = tablelist.rows[i].cells[4].innerText;           
                   //
-                  //퍼스인트, 10진법으로
+                  
                   let quantity1Number=parseFloat(quantity1);
                   let price1Number=parseFloat(price1);
-                 //alert(quantity1Number);
-                 // alert(price1Number);
+                  let delprice1Number = parseFloat(delprice1);  
+                
+                 // allGoods">선택상품금액</span> + 총 배송비   <span id="allDlv"
 
-                  //let total = quantity1*price1;
-                  //let totalNumber = quantity1Number * price1Number;
-                  //alert(totalNumber);
-
-                  
-                  
-                  //let ctotal = parseFloat(totalsum.innerHTML);
-
-                  //nan으로 나와서 nan일시 0으로 기본값변경
-                 // if(isNaN(ctotal)) {
-                  //  ctotal = 0;
-                  
 
                  // }
-                  if(!isNaN(quantity1Number)&&!isNaN(price1Number)) {
-                    ctotal += quantity1Number * price1Number ;
+                 if(!isNaN(quantity1Number)&&!isNaN(price1Number)&&!isNaN(delprice1Number)) {
+                    ctotal += (quantity1Number * price1Number) + delprice1Number;
+                    cselprice += (quantity1Number * price1Number);
+                    cdelprice += delprice1Number;
+
 
                   }
                  
@@ -466,10 +553,13 @@
              
                 }
                 totalsum.innerHTML = ctotal;
+                //let selectedPrice = document.querySelector("#allGoods");
+               // let alldelPrice = document.querySelector('#allDlv');
+                selectedPrice.innerHTML = cselprice;
+                alldelPrice.innerHTML = cdelprice;
+
 
            }; 
-
-
           }
 
         }
