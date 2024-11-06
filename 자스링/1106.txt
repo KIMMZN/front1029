@@ -1,0 +1,146 @@
+-웹개발
+웹개발은 무엇인가
+   : http / tcp,por / ip <-> dns(domain name server)
+
+
+                (request)			
+client   -------------------------> server ------------------------------ Web Server: 정적 컨텐츠 서비스 ex)첨부파일, 정적문서(html)
+	  url:http://	                                         |          -- WAS: 동적컨텐츠 서비스 ex)database 작업(crud),,
+	  method(파라미터를 어떤방법으로 보내줄것인가) url(주소)(context path)보고 판단해서 서비스 연결
+	    ex)GET:?   -   POST(문서에숨김)
+	          GET(read) - HTTP://localhost:8080/home/join?name='kk'&pwd='aa'
+		누구나 볼필요가 있는건 get으로 보내겟다. 은닉화 시킬건 post로 보내겟다.
+	          Post(insert -
+	         +rest api = 메소드에 crud의미를 담는다. update(put,patch), delete(delte),create(post),read(get) 		
+	  parameter(서버에게전송할data)
+1                                                                                                       2                          3
+ex) http:// cafe                                                              ---->        스프링 프로젝트     spring legacy
+               shopping	                                           ---->      스프링 프로젝트 
+
+
+
+
+3
+리퀘스트 할떄 url을 통해서 함
+요청(url)(context path)을 보고 WAS등이 판단함.(정적인지 동적인지)
+spring legacy                            http://      서버 위치/c path/    request mapping 에서 정의한 value
+1.request mapping: 요청분석 		// http://localhost:8080/hom/WEB-INF/classes/www/silver/hom/HomeController.java에서 
+				//server.xml의 163번에서 context path 확인가능// context path 다음 주소 지우면 잘됨. 
+				hom/ 다음 /가 value("/")다, hom/이 context path(request url)이다
+	        1.request mapping	
+   DB가 필요하면  |
+                         |
+                      2.서비스(그사람있나없나?정보요청 등)(데이터베스작업을이용하는입장)
+                        | 
+
+      mybatis -  3.dao (crude)      --> view templat(jsp등)으로 html 렌더링하여 client에게 response
+                        |
+              모든것    하나
+                      DB	 
+ 
+
+
+트랜잭션 처리  
+
+
+
+request 란
+url로 요청
+url 이란
+: 서버주소 포트번호 context path  , value이다
+request
+프로토콜://서버주소(ip또는도메인주소):port번호/context path(생략가능)/request value/
+                서버주소:서버가 있는곳 port:서비스가 있는곳(80등)/context path(어떤서비스인가)/
+
+
+
+context path를 보고 was에서 어떤 프로젝트인지 연결함.
+
+         
+
+
+legacy와 boot
+legacy는 was를 내장하고 있지 않아서 달아줘야 한다.
+boot는 was를 내장하고 있다
+
+
+\\192.168.0.53
+
+ping www.google.com
+ping www.google.com [142.250.197.196] --> ip임,
+도메인과 ip로 구분
+
+ping은 상대편 서버가 살아있는지 죽어있는지 확인하는것
+TTL = 이 뜨면 살아 있는것
+없으면 죽어있는것
+4번 뜨면 4번 테스트 한것
+시간은= 응답 속도다
+100이상이면 응답속도가 느리다는것
+
+
+
+
+
+------------
+
+
+
+요청 처리 흐름
+서비스명 parameter  method 서비스dao   view이름
+/               -              get         ""              home
+add          o,o            post       insert          list
+              1.text
+              2.binary
+                ------ 
+                 첨부파일
+
+
+
+
+1. 웹 개발이란?
+웹 개발은 클라이언트와 서버 간의 요청과 응답을 통해 웹 애플리케이션을 만드는 작업입니다.
+HTTP와 TCP/IP는 웹 통신의 기반이 되는 프로토콜입니다.
+DNS는 도메인 네임 서버로, 사람이 이해하기 쉬운 도메인 주소(예: www.google.com)를 서버의 IP 주소로 변환합니다.
+2. 클라이언트-서버 구조
+클라이언트는 **요청(request)**을 보내고, 서버는 **응답(response)**을 제공합니다.
+
+URL(Uniform Resource Locator)을 통해 요청이 전달되며, 이 URL에는 프로토콜, 서버 주소, 포트, 경로 등이 포함됩니다.
+
+요청 형식:
+
+프로토콜://서버주소:포트번호/context path/request path?쿼리파라미터
+프로토콜: HTTP 또는 HTTPS가 주로 사용됩니다.
+서버 주소: 서버의 IP 주소나 도메인 이름.
+포트 번호: 특정 서비스의 포트를 지정. (기본 HTTP: 80, HTTPS: 443)
+Context Path: 서버에서 어떤 서비스인지 구분하는 경로입니다.
+Request Path: 서비스 내에서 특정 자원이나 기능을 요청하는 경로입니다.
+HTTP 메서드는 클라이언트가 서버에 전달하는 요청 방식입니다.
+
+GET: 데이터를 조회할 때 주로 사용하며, URL에 데이터가 포함됩니다.
+POST: 데이터를 서버에 전송하고, 상태 변경이 필요할 때 주로 사용됩니다. 본문(body)에 데이터를 담아 보내기 때문에 보안이 필요한 데이터에 적합합니다.
+3. 서버의 역할
+웹 서버(Web Server): 정적 콘텐츠(이미지, HTML, CSS, JavaScript 등)를 제공. 대표적인 예로 Apache, Nginx가 있습니다.
+WAS(Web Application Server): 동적 콘텐츠(데이터베이스 작업, 비즈니스 로직 처리 등)를 처리하며, Java EE 등의 기술을 사용합니다. Tomcat, JBoss, WebLogic 등이 WAS의 예입니다.
+4. Spring Legacy와 Spring Boot
+Spring Legacy: 기존 Spring Framework로, 외부 WAS 설정이 필요하며 설정이 복잡할 수 있습니다.
+Spring Boot: 내장 WAS를 포함하여 설정을 간소화한 버전으로, 애플리케이션 시작 및 배포가 간편합니다.
+5. 요청 처리 흐름 (Spring MVC 예제)
+클라이언트가 URL을 통해 요청을 보냅니다.
+Request Mapping: Spring에서 @RequestMapping으로 특정 URL 경로를 처리할 메서드를 지정합니다.
+Service 계층: 요청을 처리하며, 비즈니스 로직을 수행합니다.
+DAO 계층: 데이터베이스와의 상호작용을 담당하며 CRUD 작업을 처리합니다.
+View: 최종 결과를 JSP와 같은 템플릿으로 렌더링하여 클라이언트에게 반환합니다.
+6. 트랜잭션 처리
+여러 데이터베이스 작업이 하나의 논리적 단위로 묶여야 하는 경우 트랜잭션 처리가 필요합니다. 트랜잭션은 성공 여부에 따라 커밋 또는 롤백됩니다.
+7. 네트워크 상태 확인 - Ping
+Ping 명령어: 서버가 정상 작동 중인지 확인하는 도구입니다.
+TTL(Time to Live) 값이 포함된 응답이 오면 서버가 응답 중임을 의미합니다.
+응답 시간이 길면(100ms 이상) 네트워크 성능 이슈가 있을 수 있습니다.
+8. URL과 요청 구조 요약
+URL은 요청의 목적지를 나타내는 주소입니다.
+프로토콜://서버주소:포트번호/context path/request path
+Context Path: WAS가 특정 프로젝트에 연결하는 데 사용하는 경로입니다.
+Request Path: 서비스 내 특정 자원이나 기능에 접근하는 경로입니다.
+
+
+	  
