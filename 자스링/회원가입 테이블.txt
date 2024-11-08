@@ -1,0 +1,12 @@
+수업시간 회원가입 테이블
+
+CREATE TABLE kmember (
+id varchar2(8) primary key,
+pass varchar2(8),
+tel varchar2(13),
+email varchar2(20)
+);
+
+desc kmember;
+
+select * from kmember;

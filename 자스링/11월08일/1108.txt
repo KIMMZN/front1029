@@ -1,0 +1,78 @@
+
+
+
+
+순서.
+1. html에서 form태그로 만들기 action method name 설정
+2.
+vo패키지 만들고 vo 클래스를 만든다.
+/ html의 name이름과 vo의 변수명과 데이터베이스 컬럼은
+// 일치해야 자동으로 맵핑가능하다.
+
+
+3. @mapping 종류 설정,  value값 매칭 
+   @modelattribute
+   vo객체로 클라이언트가 넘긴 값(name)을 받음
+   그리고 서비스단 if 객체를 생성하는데 @inject로 주소를 받아옴
+   비지니스 로직을 서비스 단에게 요청
+  
+
+4. 
+
+..스프링에서  interface의 구현은 하나의 클래스만 가능하다.
+  자바와 다름
+
+
+디버깅
+1. 클라이언트 ㅡ > 컨트롤러 전송
+2. 컨트롤러 ㅡ> 서비스
+3. 서비스 ㅡ> dao
+4. dao ㅡ sqlsession 매핑(mapper.포함)
+
+
+#$ 둘다 되는데 ㄷ다르다
+
+
+------
+
+index 파일
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>브롤 단어장</title>
+</head>
+
+<!-- https://velog.io/@seungmimi/javascript%EB%AA%A8%EB%8B%AC-%ED%8C%9D%EC%97%85-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0  -->
+<body>
+<span>단어를 입력하시오</span>
+<div class="modal">
+	<div class="modal_popup">
+		<h3>등록할 단어</h3>
+		<form>
+			<span>등록할 한글 단어 입력: <input type="text" name="Kword"></span>
+			<span>등록할 영어 단어 입력: <input type="text" name="Eword"></span>
+			<span><input type="submit" value="등록"></span>
+		</form>
+	</div>
+</div>
+<br>
+<main>
+    <section>
+        <h2>모달 팝업</h2>
+        <button type="button" class="modal_btn">클릭하면 모달팝업이 보여집니다</button>
+    </section>
+</main>
+
+<form action="word2" method="get">
+<h2>브롤 단어장</h2>
+<input type="text" name="search"><input type="submit" value="검색">
+</form>
+
+</body>
+</html>
+
+
