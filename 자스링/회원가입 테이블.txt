@@ -10,3 +10,16 @@ email varchar2(20)
 desc kmember;
 
 select * from kmember;
+
+
+
+
+단어 테이블
+
+
+create table wordtable(
+Eword varchar2(20) primary key,
+Kword varchar2(20)
+);
+
+select * from wordtable;
