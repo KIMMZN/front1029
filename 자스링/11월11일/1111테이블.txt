@@ -1,0 +1,11 @@
+CREATE TABLE kboard (
+  type VARCHAR2(10),
+  username VARCHAR2(6),
+  pass VARCHAR2(4),
+  title VARCHAR2(20),
+  content VARCHAR2(20),
+  viewmemeber VARCHAR2(6),
+  indate TIMESTAMP DEFAULT SYSDATE
+);
+
+ALTER TABLE kboard MODIFY username VARCHAR2(15);
