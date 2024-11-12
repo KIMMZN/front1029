@@ -7,32 +7,48 @@
 </head>
 <body>
 
-    <h2>브롤 단어장</h2>
-	
-	<form action="aa" method="GET">
-	 <input type="text" name="word" id="textbox" />
-	 <input type="submit" value="전송" onclick="click"/>
-	</form>
+    <div id="article_table">
+        <table class="table">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col" width="15%">번호</th>
+              <th scope="col" width="30%">제목</th>
+              <th scope="col" width="15%">담당부서</th>
+              <th scope="col" width="20%">첨부</th>
+              <th scope="col" width="20%">등록일</th>
+              <th scope="col" width="20%">수정/삭제</th>
+            </tr>
+          </thead>
+          <tbody>        
+          <c:forEach items="${list}" var="boardVO">
+           <tr> <!-- vo 1개가 tr 한줄 -->
+              <th scope="row">${boardVO.type}</th>
+              <td>${boardVO.title}</td>
+              <td>${boardVO.viewmemeber}</td>
+              <td>${boardVO.indate}</td>
+              <td><a href="del?delno=${boardVO.title}">수정/삭제</a></td>
+              <td><a href="del?delno=${boardVO.title}">수정/삭제</a></td>
+            </tr>
+          </c:forEach>         
+          </tbody>
+        </table>
+        <div id="table_menu">
+          <a href="bwr">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-plus"
+            viewBox="0 0 16 16">
+            <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z" />
+            <path
+              d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+          </svg>
+        </a>
+        </div>
+
+      </div>
+    </div>
+  </div>   
 
 
 
     
 </body>
-<script>
-let a = document.getElementById("textbox").getHTML;
-
-function click () {
-    alert(a)
-    <a href="<%=request.getContextPath()%>/aa?time=4&name=human"></a>
-    //a.getHTML
-    
-    // 입력된 단어 값을 가져옴
-    const word = document.getElementById("textbox").value;
-    
-
-
-}
-
-
-</script>
 </html>

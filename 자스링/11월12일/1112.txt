@@ -1,0 +1,44 @@
+
+
+클라이언트          
+서버 컨트롤러
+서비스            p arraylist(bodrvo)
+리포지토리     p  o  selectall()
+mapper             select * from kboard
+
+
+
+보드
+arrarits
+retrun viewname
+
+ 
+
+
+프로젝트delete
+import
+existing project in workspace
+
+
+jstl문법
+
+에러코드
+404번    controller 문제, value
+
+500번
+
+
+ <tbody>        
+          <c:forEach items="${list}" var="boardVO">
+           <tr> <!-- vo 1개가 tr 한줄 -->
+              <th scope="row">${boardVO.type}</th>
+              <td>${boardVO.title}</td>
+              <td>${boardVO.viewmemeber}</td>
+              <td>${boardVO.indate}</td>
+              <td>수정/삭제</td>
+            </tr>
+          </c:forEach>         
+          </tbody>
+
+
+<td><a href="del?delno=${boardVO.title}">수정/삭제</a></td>
