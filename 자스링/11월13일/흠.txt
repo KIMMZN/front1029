@@ -1,0 +1,97 @@
+CREATE TABLE wboard (
+    numbero NUMBER(10, 0) PRIMARY KEY,
+    type VARCHAR2(20),
+    username VARCHAR2(20),
+    pass VARCHAR2(20),
+    title VARCHAR2(20),
+    content VARCHAR2(255),
+    viewone VARCHAR2(20),
+    indate TIMESTAMP DEFAULT SYSDATE
+);
+
+select * from wboard;
+
+CREATE SEQUENCE numberoo
+START WITH 1
+INCREMENT BY 1 MAXVALUE 100
+CYCLE NOCACHE;
+
+
+desc wboard;
+
+
+
+INSERT INTO kboard (type, username, pass, title, content, viewmemeber, indate)
+VALUES ('Database', 'aaa', '1234', 'spring', 'panging', '공개', SYSDATE);
+
+select * from kboard;
+
+commit;
+
+
+
+
+
+
+
+
+
+                                                          클라이언트                           서비스                                              리포지토리                                            mapper
+글수정수정: 1/ 수정할거가져오기            value mod                              p = boardvo                                p   boardvo                                        select * from kboard w t = #{title}                                                  
+				                                              modvoard(String title)                    selectone(string title)
+
+
+--- 파라미터 넘기고, 정보(객체) 리턴받음
+
+maaper :
+
+비지니스: t속성을 찾겟다
+기술 : 인덱스 1. pk
+                   2. 강제
+꼼꼼하게
+primat key
+제약조건
+시퀀스 등
+
+model 객체를 통해
+뷰에게 넘겨줌
+
+view modform
+검색어 인덱스
+
+--
+Hash Map (파라미터 2개이상 넘기기 가능)
+boardvo
+
+
+글수정 :
+클라이언트
+url : mod
+method:post
+para : useranme , type , title ~~...
+
+컨트롤러
+pstmapping
+modelatturbute
+서비스
+p void modboard(boardvo)
+메서드 오버로딩 : 메서드 이름을 중복되게 사용하는것 , 리턴타입 매개변수는 달라야한다. 둘중에 하나만 달라도 됨
+메서드 오버로딩과 오버라이드 공부할것
+
+viewmemeber
+
+
+get
+mothod
+parameter
+
+
+----------paging-----------
+
+클라이언트
+http://192.168.0.51:8080/hom2/
+
+
+
+
+
