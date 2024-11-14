@@ -1,0 +1,52 @@
+
+
+  vale :  bwrdo
+  get: post
+ 
+컨트롤러
+
+@postmapping(value=bwrdo)
+ public string wirte(@modelaatirubute boadvo boardvo) {
+        
+
+}
+
+주제: 파일 업로드
+필요한 spring 라이브러리: multipart
+
+클라이언트
+ - input type="file" name="file"
+ - encType 지정
+
+spring
+ - 라이브러리 설정 > pom.xml
+
+---library----
+<dependency>
+	<groupId>commons-fileupload</groupId>
+	<artifactId>commons-fileupload</artifactId>
+	<version>1.3.1</version>
+</dependency>
+--
+
+
+
+File 은 server로 전송될때 binary형태로 전송된다.
+form에 enctype="multipart/form-data" 넣어야 첨부파일이 서버로 전송됨
+
+전송할때 파일과 파일에대한 정보(파일명,용량)가필요
+file이  배열로? 올라감
+fiel은 디렉토리에 저장한다.
+(metadata 데이터에대한 정보를 담고있는것)
+파일의 대한 정보는(파일명, 용량)
+db에 저장
+table attach
+
+mappig할떄 #{0} -- getter로 부터 가져온다.
+ 
+
+
+
+객체 
+
+
