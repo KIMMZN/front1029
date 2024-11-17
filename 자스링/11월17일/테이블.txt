@@ -1,0 +1,127 @@
+CREATE TABLE kmember (
+id varchar2(8) primary key,
+pass varchar2(8),
+tel varchar2(13),
+email varchar2(20)
+);
+
+desc kmember;
+
+select * from kmember;
+
+
+create table wordtable(
+Eword varchar2(20) primary key,
+Kword varchar2(20)
+);
+
+create table kboard(
+type varchar2(10),
+username varchar2(6),
+pass varchar2(4),
+title varchar2(20),
+content varchar2(20),
+viewmemeber varchar2(6),
+indate timestamp
+);
+
+select * from kboard;
+desc kboard;
+
+drop table kboard;
+
+CREATE TABLE kboard (
+  type VARCHAR2(10),
+  username VARCHAR2(6),
+  pass VARCHAR2(4),
+  title VARCHAR2(20),
+  content VARCHAR2(20),
+  viewmemeber VARCHAR2(6),
+  indate TIMESTAMP DEFAULT SYSDATE
+);
+
+ALTER TABLE kboard MODIFY username VARCHAR2(15);
+
+
+create table cboard(
+numbero number(10) primary key,
+type varchar2(20),
+username varchar2(20),
+pass varchar2(20),
+title varchar2(20),
+content varchar2(200),
+view varchar2(20),
+indate TIMESTAMP DEFAULT SYSDATE
+);
+
+
+CREATE TABLE wboard (
+    numbero NUMBER(10, 0) PRIMARY KEY,
+    type VARCHAR2(20),
+    username VARCHAR2(20),
+    pass VARCHAR2(20),
+    title VARCHAR2(20),
+    content VARCHAR2(255),
+    viewone VARCHAR2(20),
+    indate TIMESTAMP DEFAULT SYSDATE
+);
+
+SELECT numberoo.CURRVAL, numberoo.NEXTVAL FROM dual;
+SELECT MAX(numbero) FROM wboard;
+
+
+select * from wboard;
+
+CREATE SEQUENCE numberoo
+START WITH 1
+INCREMENT BY 1 MAXVALUE 100
+CYCLE NOCACHE;
+
+ALTER SEQUENCE numberoo
+MAXVALUE 9999999999;
+
+commit;
+
+desc wboard;
+
+desc kboard;
+
+INSERT INTO kboard (type, username, pass, title, content, viewmemeber, indate)
+VALUES ('Database', 'aaa', '1234', 'spring', 'panging', '공개', SYSDATE);
+
+select * from kboard;
+
+select * from wboard;
+insert into wboard values(numberoo.NEXTVAL,'민원','졸림이','1234','자야된다','수업시간에는잠','공개',SYSDATE);
+insert into wboard values(numberoo.NEXTVAL,'sd','asdfa','1234','자야된다','수업시간에는잠','공개',SYSDATE);
+
+insert into wboard values(numberoo.NEXTVAL,#{type},#{username},#{pass},#{title},#{content},#{viewone},SYSDATE);		
+desc wboard;
+SELECT COUNT(*) FROM wboard;
+commit;
+
+create table kboard_attach(
+title
+
+
+);
+
+desc kboard;
+alter table kboard add num int;
+select * from kboard;
+
+create sequence kboard_seq;
+update kboard set num=kboard_seq.nextval;
+
+alter table kboard add primary key(num);
+--db튜닝: 유니크속성 추가. 인덱스 생성
+
+create table kboard_attach(
+num int,
+filename varchar2(50),
+indate timestamp default sysdate
+);
+desc kboard_attach;
+
+desc wboard;
+

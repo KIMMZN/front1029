@@ -1,0 +1,103 @@
+
+
+프로젝트 의견제시
+회워가입: 요구사항 서술
+1 id는 유니크한 식별자
+2 비빌번호 8자 이상 
+3 등등
+4 디테일 하게
+
++erd :
+
++html view
+
++쿼리문
+
+커리문
+서브쿼리 조인 switch case 등등
+
+
+---
+crud
+중 c u d는 회원만 가능하게 설정
+
+
+1115 session(stateless때문에나옴)
+stateless?
+html엣 현재 상태를 저장하지 않음
+
+---->
+
+리퀘스트 갈때 서버가 session에 그 리퀘스트를 저장함
+쿠키
+웹브라우저 창 마다 쿠키가 다름
+탭은 아님
+
+프로세스가 다르다(브라우저창마다 다른 프로세스,서버도 다르게인식함)
+ -웹브라우저 창 하나마다 쿠키가 다르다
+cookiessssssssssssss
+
+intercepter
+-------------------------------------------------------------------------------------
+로그인 기능을 만들것이다
+intercpter 에다가 login 기능을 구현 할것이다.
+ intercepter : 스프링 컨트롤러 들어가기전에 거치는 단계
+   -로그인기능구현
+   -log 남기기
+
+
+
+
+
+
+
+
+
+프로세서: 컴퓨터가 인식하는 일처리 단위
+---------
+프로그램:
+프로그램: 실행중이지 않은 프로그램(인간이 이해할수 있는단위(
+프로세스: 실행중인 프로그램(cpu가 실행중)
+스레드: 각각의 일을 하는것(기능 하나하나의 조각)(예:카톡 메세지보내기. 그림보내기등)
+멀티스레드:예)동시해함. 그림을 보내면서 메세지를 보냄
+                     게임시. 케릭터 하나하나당. 미사일 보낼때 하나당..
+cpu:  명령수행
+
+프로그램과 프로세스의 차이?
+
+아이디 중복체크
+  동기 비동기
+api 비동기(rest 컨트롤러)
+ - 비동기 방식으로 api구축해서 중복체크 기능 구현
+
+
+++
+쿠키와 세션의 차이점
+구분	쿠키 (Cookie)	세션 (Session)
+저장 위치	클라이언트	서버
+만료 시간	설정 가능 (기본적으로 세션 쿠키)	브라우저 종료 시 또는 일정 시간
+보안	상대적으로 낮음	상대적으로 높음
+저장 용량	보통 4KB 제한	서버 메모리 크기에 따라 다름
+언제 사용해야 할까?
+쿠키는 사용자 선호도, 간단한 인증 정보 등을 저장할 때 적합합니다. 
+보안이 덜 중요한 데이터를 저장하기에 유용합니다.
+세션은 중요한 사용자 정보나 로그인 상태 관리에 적합합니다.
+
+
+
+
+------------
+
+	<beans:bean id="autehnInterceptor" class="www.silver.interceptor.AuthenticationInterceptor"></beans:bean>
+				
+				<interceptors>
+					<interceptor>
+							//다 허용
+						<mapping path="/**"/>	
+						<exclude-mapping path="/"/>						
+						<exclude-mapping path="/"/>                //제외 /
+						<exclude-mapping path="resources"/>          //resources /
+						<beans:ref bean="authenInterceptor"/>				
+		<!--  		<beans:ref bean="authenInterceptor"></beans:ref> -->										
+					</interceptor>				
+				</interceptors>

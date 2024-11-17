@@ -1,0 +1,52 @@
+페이징
+
+view 에 페이징 코드 추가
+vo에 Pagevo 객체 생성
+controller (bbs컨트롤러) 에 페이징 설정
+  - @modelattribute 로 pagevo객체 활용해서 parameter 가져오기
+serviceif , daoin 전체보기 메서드에 Pagevo pagevo 매개변수 추가
+cnt도 처리
+pagevo , settotalcount()에 clacpage(); 추가
+view 에서 변수명 확인하여 html 렌더링 되게함.
+
+
+
+---------------------
+
+
+
+title 클릭
+value: dview
+method: get
+
+@getmapping
+(number, model)
+
+
+model.addatribute(boardvo)
+
+return 
+
+-----------------------
+그림파일 올리기
+필요한 spring 라이브러리: multipart
+
+
+클라이언트
+ - input type="file" name="file"
+ - encType 지정
+
+
+spring
+ - 라이브러리 설정 > pom.xml
+
+
+
+1. filedatautil 객체 생성(파일정보를담기위한)
+      @controller 어노테이션으로 컨테이너에 등록
+     filedatautil 소스코드
+
+2. 
+
+
+
