@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>ºê·Ñ ´Ü¾îÀå </h2>
+<h2> </h2>
 
-<span>°Ë»öÇÑ´Ü¾î: <input type="text" value="${search}"></span>
-<span>°á°ú: <input type="text" value="${result}"></span>
+<span>ï¿½Ë»ï¿½ï¿½Ñ´Ü¾ï¿½: <input type="text" value="${search}"></span>
+<span>ï¿½ï¿½ï¿½: <input type="text" value="${result}"></span>
 
 </body>
 </html>

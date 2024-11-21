@@ -9,7 +9,7 @@
 <body>
 
 <h2>hello maga people</h2>
-<p>도날 트럼프 elected for presidente </p>
+<p>도날드 트럼프 elected for presidente </p>
 
 <form action="word2" method="get">
 <h2>브롤 단어장</h2>
