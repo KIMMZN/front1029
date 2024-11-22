@@ -9,12 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
-   form {
-
-      padding: 0;
-      margin: 0;
-      display: inline;
-   }
     body {
     width: 1280px;
     height: 1024px;
@@ -53,6 +47,7 @@
         box-sizing: border-box;       
         display: inline-block;
         margin-top: 18px;
+        font-size: 23px;
      }
      .write_writer {
         box-sizing: border-box;
@@ -60,7 +55,7 @@
         float: left; 
         width: 100%;
         height: 10%;
-        
+       
 
 
      }
@@ -123,103 +118,134 @@
         border: 0px;
         border-radius: 5px;
      }
-
-     .write_button {
-        float: left;
-        background-color: darkslategrey;
-        width: 100%;
-        height: 10%;
-
-     }
-
-     .write_add_btn {
-        border: 0;
-        background-color: lightseagreen;
-        border-radius: 5px;
-        height: 40px;
-        width: 50px;
-        margin-top: 10px;
-
-     }
-     .write_files{
-        float: left;
-        background-color: crimson;
-        width: 100%;
-        height: 10%;
-        box-sizing: border-box;
-        
-      
-     }
-     .write_files_btn_div {
-      display: block;
+     .comment_div {
+      background-color: dimgrey;
+      float: left;
+      width: 100%;
+      height: 30%;
       box-sizing: border-box;
-
      }
+    .Comment_title {
+      text-align: left;
+      background-color: whitesmoke;
+      float: left;
+      width: 100%;
+      border-bottom: 1px solid;
+    }
+   
+    .Comment_btn_div {
+      background-color: burlywood;
+      float: left;
+      width: 100%;
+      text-align: left;
+      height: 100%;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid black;
+    }
+    #Comment_area {
+      width: 70%;
+      height: 150px;
+      float: left;
+      border-radius: 5px;
+    }
 
-     .file_add {
-         display: inline;
+    .Comment_btn {
+      border: 0;
+      width: 100px;
+      height: 150px;
+      background-color: rgb(13, 110, 253);
+      color: wheat;
+      border-radius: 5px;
+    }
+    
+    #Comment_writer {
 
-     }
+      border-radius: 5px;
+    }
+    table {
+      background-color: antiquewhite;
+      float: left;
+      width: 100%;
+    }
+    th, td {
+      border-bottom: 1px solid gray;
+    }
+
+    
      
-     #filebtn {
-        margin-top: 1%;
-        
-        
-     }
-     #file_cancelbtn {
-      background-color: red;
-     }
      
 </style>
 <body>
-   <form action="">
+
     <div id="write">
        <div class="write_main"><span>공지사항</span></div>
        <div class="write_writer">
-         
-          
             <div class="write_check">
                 <label class="write_check_label" for="gridcheck">비밀글</label>
                 <input class="write_check_input" type="checkbox" id="gridcheck" value="1">
             </div>
             <div class="write_writer_name">
                 <label for="namebox">작성자</label>
-                <input type="text" id="namebox" placeholder="작성자이름">
+                <input type="text" id="namebox" placeholder="작성자이름" readonly>
             </div>
 
        </div>
        <div class="write_title">
             <div class="write_title_name">
                 <label for="titlebox">제목</label>
-                <input type="text" id="titlebox" placeholder="제목을 입력하시오">
+                <input type="text" id="titlebox" placeholder="제목을 입력하시오" readonly>
             </div>
 
        </div> 
        <div class="write_text">
             <div class="write_text_name">
                 <label for="contextbox">글내용</label>
-                <textarea id="contextbox" placeholder="내용을 입력하시오 ">
+                <textarea id="contextbox" placeholder="내용을 입력하시오 " readonly>
                 </textarea>
             </div>
 
        </div>
-       <div class="write_files">
-           <div class="write_files_btn_div"><input type="button" value="파일추가" id="filebtn"> </div>
-            <!--              
-            <input type="file" name="file" id="formFile">
-            <input type="file" name="file" id="formFile">
-            <input type="file" name="file" id="formFile">
-            -->
+       <div class="comment_div">
+           <div class="Comment_title">
+               <table>
+                  <thead>
+                     <tr><th>Comment</th></tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td >댓글내용:원진호!!</td>
+                        <td >작성자:시온</td>
+                     </tr>
+                     <tr>
+                        <td >댓글내용:원진호!!</td>
+                        <td >작성자:시온</td>
+                     </tr>
+                     <tr>
+                        <td >댓글내용:원진호!!</td>
+                        <td >작성자:시온</td>
+                     </tr>
+                  </tbody>
+               </table>
+           </div>
+           
+         <form action="redirect:board_wirte_preview.html" method="get" onsubmit="return confirm('정말 댓글을 등록하시겠습까?')">
+           <div class="Comment_btn_div">
+               <div class="Comment_writer_div"> 
+                  <label for="Comment_writer">작성자</label>
+                  <input type="text" id="Comment_writer" name="cmtWriter">
+               </div>
+               <div class="Comment_area_div">
+                  <textarea name="textarea" id="Comment_area" placeholder="댓글남기기" name="cmtText"></textarea>
+                  <input type="submit" value="댓글등록" class="Comment_btn">
+               </div>            
+            </div>
+         </form>
             
 
        </div>
 
-       <div class="write_button">
-                    <div class="fileadd_div">
-                    <input class="write_add_btn" type="submit" value="등록">
-                    </div>
-       </div> 
-   </form>
+
     </div>
 
 
@@ -255,59 +281,20 @@
 </body>
 <script>
 
-   let count =0;
-   let file = document.querySelector("#filebtn").addEventListener("click", ()=> {
-                
-
-
-                const fileList = document.querySelector(".write_files")
-                let newfile = document.createElement("div");
-                newfile.classList.add('file_add',);
-                newfile.innerHTML = '<input type="file" name="file" id="formFile"><input type="button" value="x" id="file_cancelbtn">';
-                fileList.appendChild(newfile);
-
-                count++;
-                let filebtnn = document.querySelector("#filebtn");
-                if(count == 3) {
-                       filebtnn.disabled = true;
-
-                }
-
-
-                /* newfile.innerHTML = '<input type="file" name="file" id="formFile">'; */
-                
-
-   });
-
-
    /* 
-   let filexBtn = document.querySelector("#file_cancelbtn").addEventListener("click", ()=> {
-      alert("ASD");
-         let filediv = document.querySelector(".file_add");
-         alert("ASD");
-         alert(filexBtn);
-
-         filediv.innerHTML = '';
+   let cmtbtn = document.querySelector(".Comment_btn").addEventListener("click",()=> {
+         let writer = document.querySelector('#Comment_writer');
+         let cmtcontent = document.querySelector('#Comment_area');
 
 
-   }); */
-   let write_files_div = document.querySelector(".write_files").addEventListener("click",(event)=> {
-      
-      let filediv = document.querySelector(".file_add");
-      let filebtn  = document.querySelector("#filebtn");
-         if(event.target.id === 'file_cancelbtn') {
-            filediv = filediv.remove();
-            count--;
-            if(count < 3) {
-               filebtn.disabled = false;
-            }
+         alert(writer.value);
+         alert(cmtcontent.value);
 
-         }
-
-      
-
-
+      alert("댓글등록하지마");
    });
+    */
+
+   
 
   
   
