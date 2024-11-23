@@ -49,24 +49,33 @@
         margin-top: 18px;
         font-size: 23px;
      }
+    
+    
+   
      .write_writer {
         box-sizing: border-box;
         background-color: chartreuse;
-        float: left; 
+        float: left;
         width: 100%;
         height: 10%;
-       
 
 
-     }
-     .write_writer div {
+
+    }
+    .write_writer div {
         margin-top: 15px;
-        box-sizing: border-box;    
+        box-sizing: border-box;
         float: left;
         background-color: gold;
         margin-right: 200px;
-     }
+        width: 100%;
+        text-align: left;
+    }
     
+
+
+
+
    
      
      .write_title {
@@ -81,7 +90,7 @@
         background-color: coral;
         float: left;
         width: 100%;
-        height: 50%;
+        height: 45%;
      }
      .write_text_name {
         box-sizing: border-box;
@@ -91,10 +100,14 @@
         
      }
      #namebox { /* 작성자 input box*/
-        width:300px;
+        width:200px;
         border: 0;
-        border-radius: 5px;
-     }
+        border-radius: 10px;
+         height: 40px;
+    }
+    #namebox:hover {
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+    }
      #contextbox{
         height: 285px;
         border: 0;
@@ -172,6 +185,32 @@
       border-bottom: 1px solid gray;
     }
 
+    /*
+    수정 삭제버튼
+    */
+    .update_delete_container {
+         float: left;
+         background-color: aqua;
+         width: 100%;
+         text-align: left;
+         height: 10%;
+         box-sizing: border-box;
+         
+    }
+    .update_delete_div {
+      background-color: darkolivegreen;
+      width: 100%;
+      height: 100%;
+    }
+
+    .update_delete_div input[type="submit"] {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(13, 110, 253);
+      color: white;
+      border-radius: 10px;
+      
+    }
     
      
      
@@ -180,11 +219,7 @@
 
     <div id="write">
        <div class="write_main"><span>공지사항</span></div>
-       <div class="write_writer">
-            <div class="write_check">
-                <label class="write_check_label" for="gridcheck">비밀글</label>
-                <input class="write_check_input" type="checkbox" id="gridcheck" value="1">
-            </div>
+       <div class="write_writer">          
             <div class="write_writer_name">
                 <label for="namebox">작성자</label>
                 <input type="text" id="namebox" placeholder="작성자이름" readonly>
@@ -206,6 +241,12 @@
             </div>
 
        </div>
+       <div class="update_delete_container">
+            <div class="update_delete_div"><input type="submit" value="수정">
+                <input type="submit" value="삭제">
+            </div>         
+       </div>
+
        <div class="comment_div">
            <div class="Comment_title">
                <table>
