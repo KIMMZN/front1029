@@ -9,6 +9,7 @@ public interface IF_BoardDao {
 	// 디비작업이 목적
 	// mybatis mapper랑 매핑해서 DB작업을 수행
 	public void insertBoard(BoardVO boardvo)throws Exception;
+	
 	public List<BoardVO> selectAll(Pagevo pagevo) throws Exception;
 	public void deleteBoard(String delno)throws Exception;
 	public BoardVO selectOne(String title)throws Exception;
